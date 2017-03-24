@@ -15,13 +15,19 @@ Route::get('now', function () {
     return date("Y-m-d H:i:s");
 });
 
-Route::auth();
+//Route::auth();
 
 Route::get('/', 'HomeController@index');
-Route::get('article/{id}', 'ArticleController@show');
-Route::post('comment', 'CommentController@store');
+//Route::get('article/{id}', 'ArticleController@show');
+//Route::post('comment', 'CommentController@store');
 
-Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {
-    Route::get('/', 'HomeController@index');
-    Route::resource('article', 'ArticleController');
-});
+Route::get('/auth/{id}','HomeController@getAuth');
+Route::post('/auth','HomeController@getData');
+//
+//Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {
+//    Route::get('/', 'HomeController@index');
+//    Route::resource('article', 'ArticleController');
+//});
+//Route::auth();
+//
+//Route::get('/home', 'HomeController@index');
